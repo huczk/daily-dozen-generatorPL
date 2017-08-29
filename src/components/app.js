@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 
-import MenuList from '../containers/menu_list'
-import ContactForm from '../containers/form';
+import MenuList from '../containers/menu_list';
 import SumbitPage from '../containers/submit_form';
 
 export default class App extends Component {
-
   render() {
     return (
       <div>

@@ -1,81 +1,74 @@
-import { items, combinations } from '../../data/index'
+import { combinations } from '../../data/index';
 
 export function selectItem(item) {
   return {
     type: 'ITEM_SELECTED',
-    payload: item.name
-  }
-};
+    payload: item.name,
+  };
+}
 
 function generate(state) {
   return {
     type: 'GENERATE',
-    payload: state
-  }
-};
+    payload: state,
+  };
+}
 
 function summary(kcal, price) {
   return {
     type: 'SUMMARY',
-    payload: {kcal: kcal, price: price}
-  }
-};
+    payload: { kcal, price },
+  };
+}
 
 function errorHandle(obj) {
   return {
     type: 'ERROR',
-    payload: obj
+    payload: obj,
+  };
+}
+
+function itemProperties(combinationTypeArray, combinationDescription, weightMultiplier, pricePlus, kcalPlus) {
+  const randomCombination = combinationTypeArray[Math.floor(Math.random() * combinationTypeArray.length)];
+  const randomCombinationKcal = (randomCombination.kcal * weightMultiplier) + kcalPlus;
+  const randomCombinationPrice = (randomCombination.price * weightMultiplier) + pricePlus;
+
+  return [combinationDescription + randomCombination.name, randomCombinationKcal, randomCombinationPrice];
+}
+
+function combineValues(generatedMenu, userConfiguredValues, dispatch) {
+  const price = generatedMenu.reduce((sum, order) => sum + parseFloat(order.products[2]), 0);
+  const kcal = generatedMenu.reduce((sum, order) => sum + parseFloat(order.products[1]), 0);
+
+  if (kcal < userConfiguredValues.minCalories || kcal > userConfiguredValues.maxCalories || price > userConfiguredValues.maxPrice) {
+    return dispatch(makeMenu(userConfiguredValues, generatedMenu));
   }
-};
 
-export function makeMenu(value, state) {
+  dispatch(generate(generatedMenu));
+  dispatch(errorHandle(''));
+  return dispatch(summary(kcal.toFixed(), price.toFixed(2)));
+}
+
+export function makeMenu(userConfiguredValues, state) {
   return (dispatch) => {
+    const generateNewMenu = state.map((item) => {
+      if (!item.draw) return item;
 
-    let newState = state.map((item) => {
-      if(!item.draw) {
-        return item;
-      } else {
-        let arr = combinations[item.name];
-        let pick = combinations[item.name][Math.floor(Math.random() * arr.length)];
+      const combinationType = combinations[item.name];
+      let pickedCombination = combinations[item.name][Math.floor(Math.random() * combinationType.length)];
 
-        if(!(pick instanceof Array)) {
-          pick = itemProperties(pick.arr, pick.string, pick.multiply, pick.pricePlus, pick.kcalPlus);
-        }
-
-        item.products = pick;
-        return item;
+      if (!(pickedCombination instanceof Array)) {
+        pickedCombination = itemProperties(pickedCombination.arr, pickedCombination.combinationDescription, pickedCombination.weightMultiplier, pickedCombination.pricePlus, pickedCombination.kcalPlus);
       }
+
+      item.products = pickedCombination;
+      return item;
     });
 
     try {
-      return combineValues(newState, value, dispatch);
+      return combineValues(generateNewMenu, userConfiguredValues, dispatch);
+    } catch (err) {
+      return dispatch(errorHandle({ message: 'Wystąpił błąd, spróbuj zmienić konfiguracje wyników' }));
     }
-    catch(err) {
-      return dispatch(errorHandle({message: 'Wystąpił błąd, spróbuj zmienić konfiguracje wyników'}));
-    }
-  }
-};
-
-function itemProperties(arr, string, multiply, pricePlus, kcalPlus){
-  let random = arr[Math.floor(Math.random()*arr.length)],
-      myKcal = random.kcal * multiply + kcalPlus,
-      myPrice = random.price * multiply + pricePlus;
-  return [string + random.name, myKcal, myPrice];
-};
-
-function combineValues(state, value, dispatch) {
-  let price = state.reduce((sum, order) => {
-    return sum + parseFloat(order.products[2]);
-  }, 0);
-  let kcal = state.reduce((sum, order) => {
-    return sum + parseFloat(order.products[1]);
-  }, 0);
-
-  if (kcal < value.minCalories || kcal > value.maxCalories || price > value.maxPrice) {
-    return dispatch(makeMenu(value, state));
-  } else {
-    dispatch(generate(state));
-    dispatch(errorHandle(''));
-    return dispatch(summary(kcal.toFixed(), price.toFixed(2)));
-  }
+  };
 }

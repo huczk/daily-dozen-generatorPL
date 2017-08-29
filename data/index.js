@@ -1,4 +1,4 @@
-export let items = {
+export const items = {
   straczkowe: [
     {name: "Fasola wielokwiatowa", kcal: 23, price: 0},
     {name: "Fasola czarna - ciemna", kcal: 130, price: 1.30},
@@ -141,48 +141,48 @@ export let items = {
   ],
 };
 
-export let combinations = {
+export const combinations = {
   straczkowe: [
-    {arr: items.straczkowe, string: "20g Miso + 200g: ", multiply: 2, pricePlus: 0.6, kcalPlus: 34},
-    {arr: items.straczkowe, string: "300g: ", multiply: 3, pricePlus: 0, kcalPlus: 0},
-    {arr: items.straczkowe, string: "50g hummusu lub dipu z fasoli + 200g: ", multiply: 2, pricePlus: 1.5, kcalPlus: 80},
-    {arr: items.straczkowe, string: "100g kiełkującej soczewicy + 200g: ", multiply: 2, pricePlus: 4, kcalPlus: 128}
+    {arr: items.straczkowe, combinationDescription: "20g Miso + 200g: ", weightMultiplier: 2, pricePlus: 0.6, kcalPlus: 34},
+    {arr: items.straczkowe, combinationDescription: "300g: ", weightMultiplier: 3, pricePlus: 0, kcalPlus: 0},
+    {arr: items.straczkowe, combinationDescription: "50g hummusu lub dipu z fasoli + 200g: ", weightMultiplier: 2, pricePlus: 1.5, kcalPlus: 80},
+    {arr: items.straczkowe, combinationDescription: "100g kiełkującej soczewicy + 200g: ", weightMultiplier: 2, pricePlus: 4, kcalPlus: 128}
   ],
   jagody: [
-    {arr: items.jagody, string: "70g mrożonych lub świeżych: ", multiply: 0.7, pricePlus: 0, kcalPlus: 0},
-    {arr: items.jagodySuszone, string: "30g suszonych: ", multiply: 0.3, pricePlus: 0, kcalPlus: 0}
+    {arr: items.jagody, combinationDescription: "70g mrożonych lub świeżych: ", weightMultiplier: 0.7, pricePlus: 0, kcalPlus: 0},
+    {arr: items.jagodySuszone, combinationDescription: "30g suszonych: ", weightMultiplier: 0.3, pricePlus: 0, kcalPlus: 0}
   ],
   owoce: [
     ["3 jablka", 166, 0.9],
-    {arr: items.owoce, string: "1 jabłko + 300g: ", multiply: 3, pricePlus: 0.3, kcalPlus: 52},
-    {arr: items.owoceSuszone, string: "1 jabłko + 100g suszonych: ", multiply: 1, pricePlus: 0.3, kcalPlus: 52},
-    {arr: items.owoce, string: "2 jabłka + 150g: ", multiply: 1.5, pricePlus: 0.3, kcalPlus: 104},
-    {arr: items.owoceSuszone, string: "2 jabłka + 50g suszonych: ", multiply: 0.5, pricePlus: 0.3, kcalPlus: 52}
+    {arr: items.owoce, combinationDescription: "1 jabłko + 300g: ", weightMultiplier: 3, pricePlus: 0.3, kcalPlus: 52},
+    {arr: items.owoceSuszone, combinationDescription: "1 jabłko + 100g suszonych: ", weightMultiplier: 1, pricePlus: 0.3, kcalPlus: 52},
+    {arr: items.owoce, combinationDescription: "2 jabłka + 150g: ", weightMultiplier: 1.5, pricePlus: 0.3, kcalPlus: 104},
+    {arr: items.owoceSuszone, combinationDescription: "2 jabłka + 50g suszonych: ", weightMultiplier: 0.5, pricePlus: 0.3, kcalPlus: 52}
   ],
   kapusta: [
     ["30g siekanych brokułów lub brukselki", 36*0.6, 1.3*0.3],
     ["1 łyżka stołowa chrzanu", 20, 0.2],
-    {arr: items.kapusta, string: "50g siekanych: ", multiply: 0.5, pricePlus: 0, kcalPlus: 0}
+    {arr: items.kapusta, combinationDescription: "50g siekanych: ", weightMultiplier: 0.5, pricePlus: 0, kcalPlus: 0}
   ],
   zielenina: [
-    {arr: items.zielenina, string: "100g surowych lub gotowanych: ", multiply: 1, pricePlus: 0, kcalPlus: 0}
+    {arr: items.zielenina, combinationDescription: "100g surowych lub gotowanych: ", weightMultiplier: 1, pricePlus: 0, kcalPlus: 0}
   ],
   warzywa: [
     ["1 szklanka soku warzywnego", 55, 0.6],
-    {arr: items.warzywa, string: "140g warzyw surowych lub gotowanych: ", multiply: 1.4, pricePlus: 0, kcalPlus: 0},
-    {arr: items.grzyby, string: "40g suszonych grzybów: ", multiply: 0.4, pricePlus: 0, kcalPlus: 0}
+    {arr: items.warzywa, combinationDescription: "140g warzyw surowych lub gotowanych: ", weightMultiplier: 1.4, pricePlus: 0, kcalPlus: 0},
+    {arr: items.grzyby, combinationDescription: "40g suszonych grzybów: ", weightMultiplier: 0.4, pricePlus: 0, kcalPlus: 0}
   ],
   orzechy: [
     ["40g masła z orzechów lub nasion", 580*0.4, 2.4*0.4],
-    {arr: items.orzechy, string: "30g: ", multiply: 0.3, pricePlus: 0, kcalPlus: 0}
+    {arr: items.orzechy, combinationDescription: "30g: ", weightMultiplier: 0.3, pricePlus: 0, kcalPlus: 0}
   ],
   pelnoziarniste: [
     ["150g makaronu pełnoziarnistego", 340*1.5, 1.5],
     ["100g chleba pełnoziarnistego", 340, 0.7],
     ["30g chleba + 100g gotowanego ziarna/ 100g makaronu/ 100g płatków zbożowych", 110+340+340, 0.3+1.5+1.5],
     ["60g chleba + 50g gotowanego ziarna/ 50g szlanki makaronu/ 0,5 szlanki płatków zbożowych - wybierz jakie chcesz", 204+175+160+170, 0.3+0.5+0.7+0.7],
-    {arr: items.pelnoziarnistePlatki, string: "150g gorących płatków ze zboża na ciepło: ", multiply: 1.5, pricePlus: 0, kcalPlus: 0},
-    {arr: items.pelnoziarniste, string: "150g gotowanego ziarna: ", multiply: 1.5, pricePlus: 0, kcalPlus: 0}
+    {arr: items.pelnoziarnistePlatki, combinationDescription: "150g gorących płatków ze zboża na ciepło: ", weightMultiplier: 1.5, pricePlus: 0, kcalPlus: 0},
+    {arr: items.pelnoziarniste, combinationDescription: "150g gotowanego ziarna: ", weightMultiplier: 1.5, pricePlus: 0, kcalPlus: 0}
   ],
   siemieOstropest: [
     ["Po 1 łyżce stołowej ostropestu i siemia (złociste lub brązowe)", 53, 0]

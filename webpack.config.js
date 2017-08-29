@@ -1,4 +1,5 @@
-var path = require('path');
+const path = require('path');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -21,5 +22,8 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     contentBase: './'
-  }
+  },
+  plugins: [
+    new UglifyJSPlugin({ minimize: true }),
+  ],
 };

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { selectItem } from '../actions/index';
-import { bindActionCreators } from 'redux';
 
 class MenuList extends Component {
   renderMenu() {
@@ -10,9 +10,10 @@ class MenuList extends Component {
         <li
           key={item.name}
           className={item.draw ? '' : 'notActive'}
-          onClick={() => this.props.selectItem(item)}>
-          <img src={`./public/icons/${item.img}.png`}/>
-          <h3>{item.display}</h3> <br/>
+          onClick={() => this.props.selectItem(item)}
+        >
+          <img src={`./public/icons/${item.img}.png`} alt="" />
+          <h3>{item.display}</h3> <br />
           <p>{item.products[0]}</p>
         </li>
       );
@@ -30,20 +31,20 @@ class MenuList extends Component {
           {this.props.menu ? this.renderMenu() : ''}
         </ul>
       </div>
-    )
+    );
   }
-};
+}
 
 function mapStateToProps(state) {
   return {
     menu: state.menu,
     summary: state.summary,
-    error: state.error
-  }
-};
+    error: state.error,
+  };
+}
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ selectItem: selectItem }, dispatch)
-};
+  return bindActionCreators({ selectItem }, dispatch);
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(MenuList);

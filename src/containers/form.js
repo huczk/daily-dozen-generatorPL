@@ -25,7 +25,7 @@ class MenuForm extends Component {
 }
 
 MenuForm = reduxForm({
-  form: 'contact'
+  form: 'contact',
 })(MenuForm);
 
 export default MenuForm;
