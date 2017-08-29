@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 
+// Form containter for 'redux-form' library - to handle user configuration values
 class MenuForm extends Component {
   render() {
     const { handleSubmit } = this.props;
@@ -25,7 +26,7 @@ class MenuForm extends Component {
 }
 
 MenuForm = reduxForm({
-  form: 'contact',
+  form: 'userConfiguration',
 })(MenuForm);
 
 export default MenuForm;

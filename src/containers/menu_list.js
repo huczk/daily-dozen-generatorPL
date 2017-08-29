@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { selectItem } from '../actions/index';
 
+// Render menu and food categories
 class MenuList extends Component {
   renderMenu() {
     return this.props.menu.map((item) => {

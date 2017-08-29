@@ -4,7 +4,8 @@ import { bindActionCreators } from 'redux';
 import MenuForm from './form';
 import { makeMenu } from '../actions/index';
 
-class SumbitPage extends Component {
+// Submit form containter - render 'redux-form' containter - 'MenuForm'
+class SubmitForm extends Component {
   submitForm = (userConfiguredValues) => {
     this.props.makeMenu(userConfiguredValues, this.props.menu);
   }
@@ -31,4 +32,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SumbitPage);
+export default connect(mapStateToProps, mapDispatchToProps)(SubmitForm);

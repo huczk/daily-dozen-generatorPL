@@ -1,3 +1,4 @@
+// items in food categories
 export const items = {
   straczkowe: [
     {name: "Fasola wielokwiatowa", kcal: 23, price: 0},
@@ -141,6 +142,7 @@ export const items = {
   ],
 };
 
+// combinations in each food category
 export const combinations = {
   straczkowe: [
     {arr: items.straczkowe, combinationDescription: "20g Miso + 200g: ", weightMultiplier: 2, pricePlus: 0.6, kcalPlus: 34},
