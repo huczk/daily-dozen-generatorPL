@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 
-// Form containter for 'redux-form' library - to handle user configuration values
+// Form containter with 'redux-form' library - to handle user configuration values
 class MenuForm extends Component {
   render() {
     const { handleSubmit } = this.props;
@@ -9,16 +9,16 @@ class MenuForm extends Component {
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="minCalories">Kalorie</label>
-          <Field name="minCalories" component="input" type="text" className="input" placeholder="min Kalorie"/>
-          <Field name="maxCalories" component="input" type="text" className="input" placeholder="max Kalorie"/>
+          <Field name="minCalories" component="input" type="text" className="form--input" placeholder="min Kalorie"/>
+          <Field name="maxCalories" component="input" type="text" className="form--input" placeholder="max Kalorie"/>
         </div>
         <div>
-          <label htmlFor="maxPrice" className="label_second">Cena</label>
-          <Field name="maxPrice" component="input" type="text" className="input" placeholder="max Cena"/>
+          <label htmlFor="maxPrice" className="form--labelSecond">Cena</label>
+          <Field name="maxPrice" component="input" type="text" className="form--input" placeholder="max Cena"/>
         </div>
-        <div className="form_button">
+        <div className="form--buttonContainer">
 
-          <button type="submit" className="button">Generuj</button>
+          <button type="submit" className="form--button">Generuj</button>
         </div>
       </form>
     );

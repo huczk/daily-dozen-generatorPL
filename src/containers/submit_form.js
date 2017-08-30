@@ -12,7 +12,7 @@ class SubmitForm extends Component {
 
   render() {
     return (
-      <div className="form_main">
+      <div className="main--form">
         <h2>Skonfiguruj wyniki:</h2>
         <MenuForm onSubmit={this.submitForm} />
       </div>
