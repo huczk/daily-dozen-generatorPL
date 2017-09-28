@@ -76,7 +76,7 @@ export const items = {
   ],
   zielenina: [
     {name: "Rukola", kcal: 25, price: 1},
-    {name: "Kapusta włoska", kcal: 27, price: 0.40},
+    {name: "Kapusta pastewna", kcal: 27, price: 0.40},
     {name: "Jarmuż - czerwony, zielony", kcal: 49, price: 1},
     {name: "Szczaw", kcal: 21, price: 0.5},
     {name: "Szpinak - z mrożonek lub świeży", kcal: 23, price: 1.6},
