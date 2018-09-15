@@ -118,8 +118,6 @@ export const items = {
     {name: "Kasza jęczmienna", kcal: 340, price: 0.50},
     {name: "Kasza gryczana", kcal: 350, price: 0.60},
     {name: "Kasza jaglana", kcal: 380, price: 0.50},
-    {name: "Kasza manna", kcal: 317, price: 0.30},
-    {name: "Kasza kuskus", kcal: 340, price: 1},
     {name: "Brązowy ryż", kcal: 350, price: 0.60},
     {name: "Dziki ryż", kcal: 360, price: 2.20},
     {name: "Popcorn", kcal: 380, price: 0.60},
